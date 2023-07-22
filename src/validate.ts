@@ -1,8 +1,8 @@
 import { join } from 'path'
 import { existsSync } from 'fs'
-import type { AdditionalOptions, SCSSVarsOptions } from '.'
+import type { AdditionalOption, SCSSVarsOption } from '.'
 
-export const validate = ({ watchFile }: SCSSVarsOptions, { rootDirectory, extension }: AdditionalOptions) => {
+export const validate = ({ watchFile }: SCSSVarsOption, { rootDirectory, extension }: AdditionalOption) => {
   const absoulteWatchFile = join(rootDirectory, watchFile)
   if (!existsSync(absoulteWatchFile)) {
     throw new Error(`Watch file does not exist ${watchFile}`)

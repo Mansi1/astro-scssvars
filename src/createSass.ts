@@ -1,5 +1,4 @@
 import type { SCSSVarsOption } from '.'
-import { createScss } from './createScss'
 
 export const createSass = ({ variables }: SCSSVarsOption): Array<string> => {
   const fileLines = ['/* this file is generated */', ':root ']
