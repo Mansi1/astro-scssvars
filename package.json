@@ -1,0 +1,36 @@
+{
+  "name": "astro-scssvars",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs.js",
+      "import": "./dist/index.esm.js",
+      "types": "./dist/index.esm.d.ts"
+    }
+  },
+  "module": "./dist/index.esm.js",
+  "main": "./dist/index.cjs.js",
+  "types": "./dist/index.esm.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "prebuild": "yarn clean",
+    "lint": "prettier --check .",
+    "lint:fix": "prettier --write .",
+    "build": "yarn node --enable-source-maps ./build.mjs",
+    "pre-commit": "yarn lint",
+    "pre-push": "yarn lint"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "astro": "^2.9.1"
+  },
+  "devDependencies": {
+    "@jsheaven/easybuild": "^1.2.9",
+    "@types/node": "^20.4.3",
+    "prettier": "^3.0.0"
+  }
+}
