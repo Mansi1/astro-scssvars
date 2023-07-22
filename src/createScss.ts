@@ -7,5 +7,5 @@ export const createScss = (options: SCSSVarsOption): Array<string> => {
     fileLines.push(`$${key}: ${value};`)
   })
 
-  return [...createCss(options), ...fileLines]
+  return [...createCss(options), '', ...fileLines]
 }

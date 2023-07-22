@@ -4,7 +4,6 @@ import type { LogLevel, Logger } from 'vite'
 import { join } from 'path'
 import { validate } from './validate'
 import { createLogger } from 'vite'
-import { createScss } from './createScss'
 import { getExtension } from './getExtension'
 import { create } from './create'
 
