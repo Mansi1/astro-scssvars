@@ -8,7 +8,7 @@ import { createScss } from './createScss'
 import { getExtension } from './getExtension'
 import { create } from './create'
 
-const INTEGRATION_NAME = 'scssvars'
+export const INTEGRATION_NAME = 'scssvars'
 
 export type SCSSVarsOption = {
   variables: Record<string, string | number>
