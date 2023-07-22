@@ -11,8 +11,9 @@ export const getVariables = async (integrationOption: SCSSVarsOption, additional
     })
   } catch (e) {
     additionalOptions.logger.error(e, { timestamp: true })
-    throw new Error(
+    additionalOptions.logger.error(
       "Error reading variable file, have to have an default export and have to run with node options NODE_OPTIONS='--experimental-vm-modules'",
+      { timestamp: true },
     )
   }
 }

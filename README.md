@@ -19,7 +19,7 @@ import { defineConfig } from 'astro/config'
 //import our plugin
 import scssvars from 'astro-scssvars'
 
-import {Theme} from './src/theme;
+import {Theme} from './src/theme';
 
 export default defineConfig({
   integrations: [
