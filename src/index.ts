@@ -1,5 +1,5 @@
 import type { AstroIntegration } from 'astro'
-import type { LogLevel, Logger } from 'vite'
+import type { Logger } from 'vite'
 
 import { join } from 'path'
 import { validate } from './validate'
@@ -10,10 +10,8 @@ import { create } from './create'
 export const INTEGRATION_NAME = 'scssvars'
 
 export type SCSSVarsOption = {
-  variables: Record<string, string | number>
-  watchFile: string
+  variablesFile: string
   outputFile: string
-  logLevel?: LogLevel
 }
 
 export type AdditionalOption = {
@@ -24,7 +22,7 @@ export type AdditionalOption = {
 export default (integrationOptions: SCSSVarsOption): AstroIntegration => {
   const extension = getExtension(integrationOptions.outputFile)
 
-  const logger = createLogger(integrationOptions.logLevel || 'info', {
+  const logger = createLogger('info', {
     prefix: `[${INTEGRATION_NAME}]`,
   })
 
@@ -38,17 +36,17 @@ export default (integrationOptions: SCSSVarsOption): AstroIntegration => {
     name: INTEGRATION_NAME,
     hooks: {
       'astro:server:setup': (options): void | Promise<void> => {
-        options.server.watcher.on('change', (path) => {
-          if (path === join(rootDirectory, integrationOptions.watchFile)) {
-            create(integrationOptions, additionalOptions)
+        options.server.watcher.on('change', async (path) => {
+          if (path === join(rootDirectory, integrationOptions.variablesFile)) {
+            await create(integrationOptions, additionalOptions)
           }
         })
       },
       'astro:config:done': async () => {
-        create(integrationOptions, additionalOptions)
+        await create(integrationOptions, additionalOptions)
       },
       'astro:build:setup': async () => {
-        create(integrationOptions, additionalOptions)
+        await create(integrationOptions, additionalOptions)
       },
     },
   }

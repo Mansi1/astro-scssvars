@@ -1,6 +1,4 @@
-import type { SCSSVarsOption } from '.'
-
-export const createSass = ({ variables }: SCSSVarsOption): Array<string> => {
+export const createSass = (variables: Record<string, any>): Array<string> => {
   const fileLines = [':root ']
   Object.entries(variables).forEach(([key, value]) => {
     fileLines.push(`  --${key}: ${value}`)
