@@ -24,5 +24,5 @@ export const create = async (integrationOption: SCSSVarsOption, additionalOption
   }
   const absoluteOutputFilePath = join(additionalOptions.rootDirectory, integrationOption.outputFile)
   writeFileSync(absoluteOutputFilePath, lines.join('\n'))
-  additionalOptions.logger.info('gernerate ' + integrationOption.outputFile)
+  additionalOptions.logger.info('gernerate ' + integrationOption.outputFile, { timestamp: true })
 }
